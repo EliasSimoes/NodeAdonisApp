@@ -1,0 +1,30 @@
+{% extends 'master' %}
+
+{% block content %}
+
+            <h2 class="text-left text-white"> Controle interno de updates </h2>
+
+            <div class="posts-wrapper">
+                {% for versao in versoes %}
+                <div class="card ajustMarginCard">
+                    <div class="card-block">
+                        <div class="post">
+                            <h2><a href="versao/{{ versao.id }}"> {{ versao.titulo }} </a> <span class="float-right">{{ versao.created_at }}</span></h2>
+                            <hr>
+                            <p>Homologador: {{ versao.autor }}.</p>
+                            <p> {{ versao.observacao | truncate(150) }} </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+                    <div class="card">
+                        <div class="card-block">
+                            <h3> Nenhum update de versão </h3>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+{% endblock %}

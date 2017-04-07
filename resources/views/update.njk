@@ -1,0 +1,50 @@
+{% extends 'master' %}
+
+{% block content %}
+
+        <div class="row justify-content-center __form">
+
+            <div class="col-6">
+
+                <div class="card">
+                    <div class="card-block">
+                        {% if old('errors') %}
+                            <div class="alert alert-danger">
+                                {% for error in old('errors') %}
+                                    <li> {{ error.message }} </li>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {{ form.open({action: 'VersaoController.store'}) }}
+
+                        {{ csrfField }}
+
+                        <fieldset class="form-group">
+                            {{ form.label('Homologador') }}
+                            {{ form.text('autor', currentUser.username, { class: 'form-control' }) }}
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            {{ form.label('Versão') }}
+                            {{ form.text('titulo', null, { class: 'form-control' }) }}
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            {{ form.label('Observações') }}
+                            {{ form.textarea('observacao', null, { class: 'form-control' }) }}
+                        </fieldset>
+
+                        {{ form.submit('Enviar', 'publish', { class: 'btn btn-primary btn-block' }) }}
+
+                        {{ form.close() }}
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}

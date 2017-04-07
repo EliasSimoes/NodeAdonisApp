@@ -1,0 +1,115 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container-fluid __banner __bannerBG">
+
+    <section class="">
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 20rem;">
+                <div class="card-block">
+
+
+                    {% if old('errors') %}
+                        <div class="alert alert-danger">
+                            {% for error in old('errors') %}
+                                <li> {{ error.message }} </li>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {{ form.open({action: 'UserController.login'}) }}
+
+                    {{ csrfField }}
+
+                    <fieldset class="form-group">
+                        {{ form.label('Login') }}
+                        {{ form.text('username', null, { class: 'form-control' }) }}
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        {{ form.label('Senha') }}
+                        {{ form.password('password', null, { class: 'form-control' }) }}
+                    </fieldset>
+
+                    {{ form.submit('Logar', 'publish', { class: 'btn btn-primary btn-block' }) }}
+
+                    {{ form.close() }}
+
+
+                    {{ linkToAction('LoginController.redirect', 'facebook') }}
+
+                    <!-- Button trigger modal -->
+                    {#<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">#}
+                        {#Launch demo modal#}
+                    {#</button>#}
+
+                    {#<!-- Modal -->#}
+                    {#<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">#}
+                        {#<div class="modal-dialog" role="document">#}
+                            {#<div class="modal-content">#}
+                                {#<div class="modal-header">#}
+                                    {#<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>#}
+                                    {#<button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                                        {#<span aria-hidden="true">&times;</span>#}
+                                    {#</button>#}
+                                {#</div>#}
+                                {#<div class="modal-body">#}
+                                    {#{% if old('errors') %}#}
+                                        {#<div class="alert alert-danger">#}
+                                            {#{% for error in old('errors') %}#}
+                                                {#<li> {{ error.message }} </li>#}
+                                            {#{% endfor %}#}
+                                        {#</div>#}
+                                    {#{% endif %}#}
+
+                                    {#{{ form.open({action: 'UserController.store'}) }}#}
+
+                                    {#{{ csrfField }}#}
+
+                                    {#<fieldset class="form-group">#}
+                                        {#{{ form.label('Nome') }}#}
+                                        {#{{ form.text('username', null, { class: 'form-control' }) }}#}
+                                    {#</fieldset>#}
+
+                                    {#<fieldset class="form-group">#}
+                                        {#{{ form.label('E-mail') }}#}
+                                        {#{{ form.text('email', null, { class: 'form-control' }) }}#}
+                                    {#</fieldset>#}
+
+                                    {#<fieldset class="form-group">#}
+                                        {#{{ form.label('Senha') }}#}
+                                        {#{{ form.password('password', null, { class: 'form-control' }) }}#}
+                                    {#</fieldset>#}
+
+                                    {#<fieldset class="form-group">#}
+                                        {#{{ form.label('Confirme a senha') }}#}
+                                        {#{{ form.password('confirm-pass', null, { class: 'form-control' }) }}#}
+                                    {#</fieldset>#}
+
+                                    {#{{ form.submit('Salvar', 'publish', { class: 'btn btn-primary btn-block' }) }}#}
+
+                                    {#{{ form.close() }}#}
+                                {#</div>#}
+                                {#<div class="modal-footer">#}
+                                    {#<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+                                    {#<button type="button" class="btn btn-primary">Save changes</button>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

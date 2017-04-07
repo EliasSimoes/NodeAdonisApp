@@ -1,0 +1,17 @@
+{% extends 'master' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-block">
+            <div class="">
+                <div>
+                    <a href="/versao"> Voltar </a>
+                </div>
+                <hr>
+                <h2>{{ versao.titulo }}, {{ versao.created_at }}</h2>
+                <p>Homologador: {{ versao.autor }}.</p>
+                <p>{{ versao.observacao }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
